@@ -1,0 +1,31 @@
+*{
+    width: 100vw;
+    height: 100vh;
+}
+
+app-sign-up{
+    width: 100vw;
+    height: 100vh;
+}
+
+#right-button-card{
+    background-image: url('/assets/images/right-corner-eclipse.png');
+    width:19rem ;
+    height: 19rem;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    // background-position: cover;
+}
+
+#left-ellipse{
+    background-image: url('/assets/images/left-ellipse.png');
+    width:26rem ;
+    height: 22rem;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    // background-position: cover;
+}

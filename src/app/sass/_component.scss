@@ -1,0 +1,18 @@
+@mixin text-bold($size: 2.5rem, $color: $gray-1100, $weight: 700) {
+    font-weight: $weight;
+    font-size: $size;
+    color: $color;
+  }
+  
+  @mixin text-normal($size: 1rem, $color: $gray-500, $weight: 400) {
+    font-weight: $weight;
+    font-size: $size;
+    color: $color;
+  }
+
+  @mixin font-family($size:1rem, $color:$deep-green, $weight:500, $font-family:$league-Bold) {
+    font-family: $font-family;
+    font-size: $size;
+    color:$color;
+    font-weight: $weight;
+  }

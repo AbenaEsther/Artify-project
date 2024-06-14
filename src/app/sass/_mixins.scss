@@ -1,0 +1,91 @@
+@mixin icon($url, $size: 24px) {
+    display: inline-block;
+    width: $size;
+    height: $size;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: $url;
+  }
+
+@mixin space-between{
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
+}
+
+  @mixin flex-row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  @mixin flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @mixin img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+@mixin rounded-image {
+    @include img;
+    border-radius: 50%;
+  }
+  
+
+  @mixin rounded-img-container($size: 80px) {
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+  }
+  
+  @mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @mixin justify-content{
+    display: flex;
+    justify-content: center;
+  }
+
+  @mixin align-items{
+    display: flex;
+    align-items: center;
+  }
+
+  @mixin icon($url, $size: 24px) {
+    display: inline-block;
+    width: $size;
+    height: $size;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: $url;
+  }
+
+  @mixin button(){
+    background-color: $deep-violet;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 2rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+  }
+
+  @mixin button2(){
+    background-image: url('/assets/images/close.png');
+    background-repeat: no-repeat;
+    width: 2rem;
+    height: 2.25rem;
+    background-color: $deep-green;
+    background-position: center;
+    line-height: 1rem;
+    border-radius: 0 0.3rem 0.3rem 0;
+}
+

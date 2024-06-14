@@ -1,25 +1,44 @@
-<title>Create your account</title>
 <form action="">
-  <div>
-    <small>Full Name</small>
-    <input type="text" />
+  <div id="login-form">
+
   </div>
-  <div>
-    <small>Email Address</small>
-    <input type="text" />
+  <div id="sign-up-form">
+    <h1 id="title">Create your account</h1>
+  <main>
+    <div class="credetails">
+      <small>Full Name</small>
+      <input type="text" placeholder="Esther Ofosu" />
+    </div>
+    <div class="credetails">
+      <small>Email Address</small>
+      <input type="text" placeholder="essieofosina78@gmail.com" />
+    </div>
+    <div>
+      <small>Phone Number</small>
+      <input type="text" placeholder="0552472003" />
+    </div>
+    <div>
+      <small>Password</small>
+      <input type="password" />
+    </div>
+    <div>
+      <small>Confirm Password</small>
+      <input type="password" id="confirm-password" />
+    </div>
+    <span>
+      <input type="checkbox">
+      <small>I agree to the <a href="">Terms of Service</a> and <a href="">Privacy Policy</a></small>
+    </span>
+    <button>Create Account</button>
+    <span>Already having an account? 
+      <small id="sign-in">Sign in</small>
+    </span>
+    <span>
+      <div id="google-icon"></div>
+      Sign in with Gmail
+    </span>
+  </main>
   </div>
-  <div>
-    <small>Phone Number</small>
-    <input type="number" />
-  </div>
-  <div>
-    <small>Password</small>
-    <input type="text" />
-  </div>
-  <div>
-    <small>confirm Password</small>
-    <input type="text" />
-  </div>
-  <span></span>
-  <button>Create Account</button>
+  
 </form>
+
