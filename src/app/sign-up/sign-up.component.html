@@ -1,29 +1,46 @@
-<form action="">
-  <div id="login-form">
+<form action="" [formGroup]="signupForm" (ngSubmit)="createAccount()">
+  <!-- <div id="login-form">
 
-  </div>
+  </div> -->
   <div id="sign-up-form">
     <h1 id="title">Create your account</h1>
   <main>
-    <div class="credetails">
+    <div class="credentials" id="fullname-div">
       <small>Full Name</small>
-      <input type="text" placeholder="Esther Ofosu" />
+      <input type="text" placeholder="Esther Ofosu" 
+      formControlName="fullname"
+      name="fullname"
+      [ngClass]="{invalid: invalidPhonenumber}"
+      />
     </div>
-    <div class="credetails">
+    <div class="credetails" id="email-div">
       <small>Email Address</small>
-      <input type="text" placeholder="essieofosina78@gmail.com" />
+      <input type="text" placeholder="essieofosina78@gmail.com" 
+      formControlName="email"
+      name="email"
+      class="email"
+      [ngClass]="{invalid: invalidEmail}"
+      />
     </div>
-    <div>
+    <div id="phonenumber-div">
       <small>Phone Number</small>
-      <input type="text" placeholder="0552472003" />
+      <input type="text" placeholder="0552472003" 
+      formControlName="phonenumber"
+      name="phonenumber"
+      [ngClass]="{invalid: invalidPhonenumber}"
+      />
     </div>
-    <div>
+    <div id="password-div">
       <small>Password</small>
       <input type="password" />
     </div>
-    <div>
+    <div id="confirm-password-div">
       <small>Confirm Password</small>
-      <input type="password" id="confirm-password" />
+      <input type="password" id="confirm-password" 
+      formControlName="repeatPassword"
+      name="repeatPassword"
+      [ngClass]="{invalid: invalidRepeatPassword}"
+      />
     </div>
     <span>
       <input type="checkbox">
