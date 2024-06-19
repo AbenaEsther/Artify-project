@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { User } from '../shared/services/interfaces';
+import { passwordMatchValidator } from '../shared/services/password-mismatch';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,8 +17,12 @@ signupForm= new FormGroup({
   email: new FormControl('',[Validators.required, Validators.email]),
   phonenumber: new FormControl('', [Validators.required]),
   password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-  repeatPassword: new FormControl('', [Validators.required])
-})
+  confirmPassword: new FormControl('', [Validators.required])
+},
+{
+  validators:passwordMatchValidator
+}
+)
 
 get password(){
   return this.signupForm.controls['password']
@@ -32,15 +37,15 @@ get email(){
 }
 
 get invalidEmail(){
-  return this.email.invalid && this.password.dirty;
+  return this.email.invalid && this.email.dirty;
 }
 
-get repeatPassword(){
-  return this.signupForm.controls['repeatPassword']
+get confirmPassword(){
+  return this.signupForm.controls['confirmPassword']
 }
 
-get invalidRepeatPassword(){
-  return this.repeatPassword.invalid && this.repeatPassword.dirty
+get invalidConfirmPassword(){
+  return this.confirmPassword.invalid && this.confirmPassword.dirty
 }
 
 get phonenumber(){
@@ -49,6 +54,20 @@ get phonenumber(){
 
 get invalidPhonenumber(){
   return this.phonenumber.invalid && this.phonenumber.dirty
+}
+
+get fullname(){
+  return this.signupForm.controls['fullname']
+}
+
+get invalidFullname(){
+  return this.fullname.invalid && this.fullname.dirty
+}
+
+get misMatchPassword(){
+  return (
+    this.signupForm.errors?.['passwordMismatch'] && this.confirmPassword.valid && this.password.valid
+  )
 }
 
 

@@ -1,71 +1,99 @@
 @import "main";
 
 form {
-
-
-  #sign-up-form{
+  #sign-up-form {
     @include center;
     flex-direction: column;
     border-radius: 1rem;
     h1 {
-    @include font-family($font-family:$gill-san,$size:2.5rem,$weight:550);
-    
-  }
+      @include font-family(
+        $font-family: $gill-san,
+        $size: 2.5rem,
+        $weight: 550
+      );
+    }
 
-  main {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    div {
+    main {
+      width: 40%;
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
 
-      small {
-          @include font-family($font-family:$gill-san,$size:1.5rem);
-      }
-      input {
-        height: 2rem;
-        background-color: transparent;
+        .fullname.invalid, .email.invalid, .phonenumber.invalid, .password.invalid, .confirm-password.invalid {
+          border: 0.2rem solid rgba(255, 0, 0, 0.918);
+          outline: none;
+        }
+
+        .error-message{
+          color:rgba(255, 0, 0, 0.918);
+          font-size: 0.9rem;
+          align-self: flex-start;
+        }
+
+        small {
+          @include font-family($font-family: $gill-san, $size: 1.5rem);
+        }
+        input {
+          height: 2rem;
+          background-color: transparent;
+          padding-left: 0.5rem;
+        }
+
+        // input::placeholder{
+        //   padding-left: 0.4rem;
+        // }
+
+        #confirm-password {
+          margin-bottom: 1rem;
+        }
       }
 
-      #confirm-password {
-        margin-bottom: 1rem;
+      button {
+        @include button;
       }
-    }
 
-    button {
-      @include button;
-    }
-    span{
+      button:disabled{
+        background-color: rgb(235, 206, 235);
+        cursor: not-allowed;
+      }
+
+      span {
         @include center;
-        @include font-family($font-family:$gill-san,$size:1.25rem);
-        #sign-in{
-        @include font-family($font-family:$gill-san,$size:1.25rem,$color:$text-link-color);
-        cursor: pointer;
+        @include font-family($font-family: $gill-san, $size: 1.25rem);
+        #sign-in {
+          @include font-family(
+            $font-family: $gill-san,
+            $size: 1.25rem,
+            $color: $text-link-color
+          );
+          cursor: pointer;
         }
-        
-    }
-    span{
-        small{
-        @include font-family($font-family:$gill-san,$size:1.25rem);
-            a{
-                color: $text-link-color;
-                cursor:pointer;
-            }
+      }
+      span {
+        small {
+          @include font-family($font-family: $gill-san, $size: 1.25rem);
+          a {
+            color: $text-link-color;
+            cursor: pointer;
+          }
         }
-    }
-    span{
+      }
+      span {
         @include center;
         gap: 0.5rem;
-        @include font-family($font-family:$gill-san,$size:1.25rem);
+        @include font-family($font-family: $gill-san, $size: 1.25rem);
         display: flex;
-        #google-icon{
-            background-image: url('/assets/images/google-icon.png');
-            width: 3rem;
-            height: 3rem;cursor: pointer;
+        #google-icon {
+          background-image: url("/assets/images/google-icon.png");
+          width: 3rem;
+          height: 3rem;
+          cursor: pointer;
         }
+      }
     }
-  }}
+  }
 }

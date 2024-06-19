@@ -4,58 +4,110 @@
   </div> -->
   <div id="sign-up-form">
     <h1 id="title">Create your account</h1>
-  <main>
-    <div class="credentials" id="fullname-div">
-      <small>Full Name</small>
-      <input type="text" placeholder="Esther Ofosu" 
-      formControlName="fullname"
-      name="fullname"
-      [ngClass]="{invalid: invalidPhonenumber}"
-      />
-    </div>
-    <div class="credetails" id="email-div">
-      <small>Email Address</small>
-      <input type="text" placeholder="essieofosina78@gmail.com" 
-      formControlName="email"
-      name="email"
-      class="email"
-      [ngClass]="{invalid: invalidEmail}"
-      />
-    </div>
-    <div id="phonenumber-div">
-      <small>Phone Number</small>
-      <input type="text" placeholder="0552472003" 
-      formControlName="phonenumber"
-      name="phonenumber"
-      [ngClass]="{invalid: invalidPhonenumber}"
-      />
-    </div>
-    <div id="password-div">
-      <small>Password</small>
-      <input type="password" />
-    </div>
-    <div id="confirm-password-div">
-      <small>Confirm Password</small>
-      <input type="password" id="confirm-password" 
-      formControlName="repeatPassword"
-      name="repeatPassword"
-      [ngClass]="{invalid: invalidRepeatPassword}"
-      />
-    </div>
-    <span>
-      <input type="checkbox">
-      <small>I agree to the <a href="">Terms of Service</a> and <a href="">Privacy Policy</a></small>
-    </span>
-    <button>Create Account</button>
-    <span>Already having an account? 
-      <small id="sign-in">Sign in</small>
-    </span>
-    <span>
-      <div id="google-icon"></div>
-      Sign in with Gmail
-    </span>
-  </main>
-  </div>
-  
-</form>
+    <main>
+      <div class="credentials" id="fullname-div">
+        <small>Full Name</small>
+        <input
+          type="text"
+          placeholder="Esther Ofosu"
+          formControlName="fullname"
+          name="fullname"
+          class="fullname"
+          [ngClass]="{ invalid: invalidFullname }"
+        />
+        @if(invalidFullname){
+        <span class="error-message"> Can't be empty </span>
+        }
+      </div>
+      <div class="credentails" id="email-div">
+        <small>Email Address</small>
+        <input
+          type="text"
+          placeholder="essieofosina78@gmail.com"
+          formControlName="email"
+          name="email"
+          class="email"
+          [ngClass]="{ invalid: invalidEmail }"
+        />
+        @if(invalidEmail){
+        <span class="error-message">
+          @if(email.errors?.['required']){
+          <small class="error-message"> Can't be empty </small>
+          }
+          @if(email.errors?.['email']){
+            <small class="error-message"> invalid email address</small>
+          }
+        </span>
+        }
+      </div>
+      <div id="phonenumber-div">
+        <small>Phone Number</small>
+        <input
+          type="text"
+          placeholder="0552472003"
+          formControlName="phonenumber"
+          name="phonenumber"
+          class="phonenumber"
+          [ngClass]="{ invalid: invalidPhonenumber }"
+        />
+        @if(invalidPhonenumber){
+        <span class="error-message"> Can't be empty </span>
+        }
+      </div>
+      <div id="password-div">
+        <small>Password</small>
+        <input
+          type="password"
+          formControlName="password"
+          name="password"
+          class="password"
+          [ngClass]="{ invalid: invalidPassword }"
+        />
+        @if(invalidPassword){
+          @if(password.errors?.['required']){
+        <span class="error-message"> Can't be empty </span>
+          }
 
+          @if(password.errors?.['minlength']){
+            <span class="error-message">password must be more than 8 characters</span>
+          }
+        }
+      </div>
+      <div id="confirm-password-div">
+        <small>Confirm Password</small>
+        <input
+          type="password"
+          id="confirm-password"
+          formControlName="confirmPassword"
+          name="confirmPassword"
+          class="confirm-password"
+          [ngClass]="{ invalid: invalidConfirmPassword}"
+        />
+        @if(invalidConfirmPassword){
+        <span class="error-message"> Repeat Password </span>
+        }
+        @if(misMatchPassword){
+          <span class="error-message">Password should match</span>
+        }
+      </div>
+      <span>
+        <input type="checkbox" />
+        <small
+          >I agree to the <a href="">Terms of Service</a> and
+          <a href="">Privacy Policy</a></small
+        >
+      </span>
+      <button type="submit" [disabled]="signupForm.invalid">
+        Create Account
+      </button>
+      <span
+        >Already having an account?
+        <small id="sign-in">Sign in</small>
+      </span>
+      <span>
+        <div id="google-icon"></div>
+        Sign in with Gmail
+      </span>
+    </main>
+  </div>
+</form>
