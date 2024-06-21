@@ -23,6 +23,27 @@ form {
         flex-direction: column;
         gap: 0.75rem;
 
+        div{
+          flex-direction: row;
+          align-items: center;
+          border: 0.15rem solid;
+          padding-right: 0.5rem;
+
+          .password, .confirm-password{
+            width: 100%;
+            z-index: 5;
+            border: 0;
+            outline: 0;
+          }
+          img{
+            height: 1rem;
+            width: 1rem;
+            left: 1;
+            z-index: 0;
+          }
+          
+        }
+
         .fullname.invalid, .email.invalid, .phonenumber.invalid, .password.invalid, .confirm-password.invalid {
           border: 0.2rem solid rgba(255, 0, 0, 0.918);
           outline: none;
@@ -43,11 +64,7 @@ form {
           padding-left: 0.5rem;
         }
 
-        // input::placeholder{
-        //   padding-left: 0.4rem;
-        // }
-
-        #confirm-password {
+        .repeat-password {
           margin-bottom: 1rem;
         }
       }

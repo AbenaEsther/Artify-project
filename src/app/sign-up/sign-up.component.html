@@ -12,6 +12,7 @@
           placeholder="Esther Ofosu"
           formControlName="fullname"
           name="fullname"
+          autocomplete="name"
           class="fullname"
           [ngClass]="{ invalid: invalidFullname }"
         />
@@ -26,6 +27,7 @@
           placeholder="essieofosina78@gmail.com"
           formControlName="email"
           name="email"
+          autocomplete="email"
           class="email"
           [ngClass]="{ invalid: invalidEmail }"
         />
@@ -47,6 +49,7 @@
           placeholder="0552472003"
           formControlName="phonenumber"
           name="phonenumber"
+          autocomplete="tel"
           class="phonenumber"
           [ngClass]="{ invalid: invalidPhonenumber }"
         />
@@ -56,13 +59,17 @@
       </div>
       <div id="password-div">
         <small>Password</small>
-        <input
+        <div id="input-div" class="password" [ngClass]="{invalid:invalidPassword}">
+          <input
           type="password"
           formControlName="password"
           name="password"
+          autocomplete="off"
           class="password"
-          [ngClass]="{ invalid: invalidPassword }"
+          id="password"
         />
+        <img src="/assets/images/eye-open.png" alt="" id="eyeicon">
+        </div>
         @if(invalidPassword){
           @if(password.errors?.['required']){
         <span class="error-message"> Can't be empty </span>
@@ -75,14 +82,18 @@
       </div>
       <div id="confirm-password-div">
         <small>Confirm Password</small>
-        <input
+        <div id="input-div" class="confirm-password" [ngClass]="{invalid: invalidConfirmPassword}" class="repeat-password">
+          <input
           type="password"
           id="confirm-password"
           formControlName="confirmPassword"
           name="confirmPassword"
+          autocomplete="off"
           class="confirm-password"
-          [ngClass]="{ invalid: invalidConfirmPassword}"
         />
+        <img src="/assets/images/eye-open.png" alt="" id="eyeicon">
+        </div>
+
         @if(invalidConfirmPassword){
         <span class="error-message"> Repeat Password </span>
         }
