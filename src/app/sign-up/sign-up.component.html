@@ -1,10 +1,8 @@
 <form action="" [formGroup]="signupForm" (ngSubmit)="createAccount()">
-  <!-- <div id="login-form">
-
-  </div> -->
   <div id="sign-up-form">
-    <h1 id="title">Create your account</h1>
+    <h1 id="title">{{ isSignUpMode ? "Create your account" : "Sign In" }}</h1>
     <main>
+      @if(isSignUpMode){
       <div class="credentials" id="fullname-div">
         <small>Full Name</small>
         <input
@@ -20,6 +18,7 @@
         <span class="error-message"> Can't be empty </span>
         }
       </div>
+      } @if(isSignUpMode || isLoginMode){
       <div class="credentails" id="email-div">
         <small>Email Address</small>
         <input
@@ -35,13 +34,13 @@
         <span class="error-message">
           @if(email.errors?.['required']){
           <small class="error-message"> Can't be empty </small>
-          }
-          @if(email.errors?.['email']){
-            <small class="error-message"> invalid email address</small>
+          } @if(email.errors?.['email']){
+          <small class="error-message"> invalid email address</small>
           }
         </span>
         }
       </div>
+      } @if(isSignUpMode){
       <div id="phonenumber-div">
         <small>Phone Number</small>
         <input
@@ -57,68 +56,82 @@
         <span class="error-message"> Can't be empty </span>
         }
       </div>
+      } @if(isSignUpMode || isLoginMode){
       <div id="password-div">
         <small>Password</small>
-        <div id="input-div" class="password" [ngClass]="{invalid:invalidPassword}">
-          <input
-          type="password"
-          formControlName="password"
-          name="password"
-          autocomplete="off"
+        <div
+          id="input-div"
           class="password"
-          id="password"
-        />
-        <img src="/assets/images/eye-open.png" alt="" id="eyeicon">
+          [ngClass]="{ invalid: invalidPassword }"
+        >
+          <input
+            type="password"
+            formControlName="password"
+            name="password"
+            autocomplete="off"
+            class="password"
+            id="password"
+          />
+          <img src="/assets/images/eye-open.png" alt="" id="eyeicon" />
         </div>
-        @if(invalidPassword){
-          @if(password.errors?.['required']){
+        @if(invalidPassword){ @if(password.errors?.['required']){
         <span class="error-message"> Can't be empty </span>
-          }
-
-          @if(password.errors?.['minlength']){
-            <span class="error-message">password must be more than 8 characters</span>
-          }
-        }
+        } @if(password.errors?.['minlength']){
+        <span class="error-message"
+          >password must be more than 8 characters</span
+        >
+        } }
       </div>
+      } @if(isSignUpMode){
       <div id="confirm-password-div">
         <small>Confirm Password</small>
-        <div id="input-div" class="confirm-password" [ngClass]="{invalid: invalidConfirmPassword}" class="repeat-password">
-          <input
-          type="password"
-          id="confirm-password"
-          formControlName="confirmPassword"
-          name="confirmPassword"
-          autocomplete="off"
+        <div
+          id="input-div"
           class="confirm-password"
-        />
-        <img src="/assets/images/eye-open.png" alt="" id="eyeicon">
+          [ngClass]="{ invalid: invalidConfirmPassword }"
+          class="repeat-password"
+        >
+          <input
+            type="password"
+            id="confirm-password"
+            formControlName="confirmPassword"
+            name="confirmPassword"
+            autocomplete="off"
+            class="confirm-password"
+          />
+          <img src="/assets/images/eye-open.png" alt="" id="eyeicon" />
         </div>
-
         @if(invalidConfirmPassword){
         <span class="error-message"> Repeat Password </span>
-        }
-        @if(misMatchPassword){
-          <span class="error-message">Password should match</span>
+        } @if(misMatchPassword){
+        <span class="error-message">Password should match</span>
         }
       </div>
-      <span>
-        <input type="checkbox" />
+      }
+
+      @if(isSignUpMode){ <span>
+        <input type="checkbox"name="checkbox" />
         <small
           >I agree to the <a href="">Terms of Service</a> and
           <a href="">Privacy Policy</a></small
         >
-      </span>
+      </span>}
       <button type="submit" [disabled]="signupForm.invalid">
-        Create Account
+        {{ isSignUpMode ? "Create Account" : "Login" }}
       </button>
-      <span
-        >Already having an account?
-        <small id="sign-in">Sign in</small>
+
+      @if(isSignUpMode || isLoginMode){<span>
+        {{
+          isSignUpMode ? "Already having an account?" : "Don't have an account?"
+        }}
+        <small id="sign-in"  (click)="toggleMode()">{{ isSignUpMode ? "Sign in" : "Login" }} </small>
       </span>
       <span>
+        @if(isSignUpMode){
         <div id="google-icon"></div>
-        Sign in with Gmail
+        Sign in with Gmail }
       </span>
+      }
     </main>
   </div>
 </form>

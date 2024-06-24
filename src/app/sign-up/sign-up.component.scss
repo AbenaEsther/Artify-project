@@ -64,6 +64,10 @@ form {
           padding-left: 0.5rem;
         }
 
+        input::placeholder{
+          color: $placeholder-color;
+        }
+
         .repeat-password {
           margin-bottom: 1rem;
         }
@@ -89,8 +93,7 @@ form {
           );
           cursor: pointer;
         }
-      }
-      span {
+
         small {
           @include font-family($font-family: $gill-san, $size: 1.25rem);
           a {
@@ -98,8 +101,7 @@ form {
             cursor: pointer;
           }
         }
-      }
-      span {
+
         @include center;
         gap: 0.5rem;
         @include font-family($font-family: $gill-san, $size: 1.25rem);

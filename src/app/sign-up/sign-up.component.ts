@@ -18,6 +18,8 @@ import { passwordMatchValidator } from '../shared/services/password-mismatch';
   styleUrl: './sign-up.component.scss',
 })
 export class SignUpComponent implements OnInit {
+  isSignUpMode= true;
+  isLoginMode= false;
   signupForm = new FormGroup(
     {
       fullname: new FormControl('', [Validators.required]),
@@ -83,32 +85,48 @@ export class SignUpComponent implements OnInit {
   }
 
   createAccount() {
-    // const user= {
-    //   email: this.signupForm.value.email,
-    //   password: this.signupForm.value.password
-    // } as User;
-
     if (!this.signupForm.valid) return;
   }
 
-  ngOnInit(): void {
-    let eyeicon = document.getElementById('eyeicon') as HTMLImageElement;
-    let password = document.getElementById('password')as HTMLInputElement;
-    let confirmPassword= document.getElementById('confirm-password') as HTMLInputElement
-   
-    eyeicon!.onclick = function () {
-      if (password!.type == 'password') {
-        password!.type = 'text';
-        eyeicon!.src = '/assets/images/eye-close.png';
-      } else if(confirmPassword!.type =='password'){
-        password!.type = 'text';
-        eyeicon!.src = '/assets/images/eye-close.png';
-        console.log('confirm-password is visible')
-      }
-      else {
-        password!.type = 'password';
-        eyeicon!.src = '/assets/images/eye-open.png';
-      }
-    };
+   toggleMode(){
+    this.isSignUpMode = !this.isSignUpMode;
+    this.isLoginMode = !this.isLoginMode;
   }
+
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    let eyeicon = document.getElementById('eyeicon') as HTMLImageElement;
+    let password = document.getElementById('password') as HTMLInputElement;
+
+    if (password && eyeicon) {
+      eyeicon.onclick = function () {
+        console.log('eyeicon clicked');
+        password.type = password.type === 'password' ? 'text' : 'password';
+        eyeicon.src= password.type === 'password'? '/assets/images/eye-close.png' : '/assets/images/eye-open.png'
+      };
+    }
+    else{
+      console.error('password or eye icon not found')
+    }
+  }
+
+  ngOnInit(): void {
+    // let eyeicon = document.getElementById('eyeicon') as HTMLImageElement;
+    // let password = document.getElementById('password')as HTMLInputElement;
+   
+    // eyeicon.onclick = function () {
+    //   if (password.type == 'password') {
+    //     console.log("eyeicon clicked");
+    //     console.log(password.type);
+    //     password.type = 'text';
+    //     eyeicon.src = '/assets/images/eye-close.png';
+    //     console.log("hello")
+    //   } else {
+    //     password.type = 'password';
+    //     eyeicon.src = '/assets/images/eye-open.png';
+    //   }
+    // };
+  }
+
 }
